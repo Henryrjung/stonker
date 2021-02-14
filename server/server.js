@@ -3,11 +3,13 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
+const cron = require('node-cron');
 
 const db = require('./models');
 const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
+const scheduledTasks = require('./config/cron');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -40,6 +42,9 @@ if (process.env.NODE_ENV === 'production') {
 
 // Dynamically force schema refresh only for 'test'
 const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
+
+//cron job call to check google trends
+cron.schedule('0 0,15,30,45 * * *', scheduledTasks);
 
 db.sequelize
   .authenticate()
