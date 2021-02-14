@@ -43,8 +43,9 @@ if (process.env.NODE_ENV === 'production') {
 // Dynamically force schema refresh only for 'test'
 const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
 
-//cron job call to check google trends
-cron.schedule('0 0,15,30,45 * * *', scheduledTasks);
+// Cron job call to check google trends.
+// At 10 calls every 15 minutes, we can check 960 stock symbols a day.
+cron.schedule('0 0,15,30,45 * * *', scheduledTasks).start();
 
 db.sequelize
   .authenticate()
