@@ -3,11 +3,13 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
+const cron = require('node-cron');
 
 const db = require('./models');
 const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
+const scheduledTasks = require('./config/cron');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -40,6 +42,10 @@ if (process.env.NODE_ENV === 'production') {
 
 // Dynamically force schema refresh only for 'test'
 const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
+
+// Cron job call to check google trends.
+// At 10 calls every 15 minutes, we can check 960 stock symbols a day.
+cron.schedule('0 0,15,30,45 * * *', scheduledTasks).start();
 
 db.sequelize
   .authenticate()
