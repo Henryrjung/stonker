@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     sector: DataTypes.STRING,
 
     checkedAt: {
-      type: DataTypes.Date,
+      type: DataTypes.DATEONLY,
       validate: {
         isDate: true
       }
