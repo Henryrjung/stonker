@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const CompanyInfo = sequelize.define('CompanyInfo', {
+  const Company = sequelize.define('Company', {
     symbol: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -26,4 +26,12 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  Company.associate = function(models) {
+    Company.hasMany(models.Trend, {
+      onDelete: 'cascade'
+    });
+  };
+  
+  return Company;
 };
