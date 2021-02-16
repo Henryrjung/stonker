@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     sector: DataTypes.STRING,
 
     checkedAt: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       validate: {
         isDate: true
       }
@@ -32,6 +32,6 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: 'cascade'
     });
   };
-  
+
   return Company;
 };
