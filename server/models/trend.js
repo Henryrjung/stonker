@@ -1,5 +1,3 @@
-const { INTEGER } = require('sequelize');
-
 module.exports = function(sequelize, DataTypes) {
   const Trend = sequelize.define('Trend', {
     //note, day1 should be the oldest date that was searched, signifying a week ago.
