@@ -6,7 +6,7 @@ const db = require('../../models');
 // timezone compared to UTC
 const TIMEZONE = -18;
 
-const searchTrends = function(input, date = new Date()) {
+const searchTrends = function(input, date) {
   const weekAgo = new Date(date.valueOf - 6 * 24 * 60 * 60 * 1000);
   return googleTrends.interestOverTime({
     keyword: [input],
@@ -17,7 +17,14 @@ const searchTrends = function(input, date = new Date()) {
   });
 };
 
-const search10Symbols = async function(date) {
+const standardDev = function(array) {
+  const mean = array.reduce((acc, num) => acc + num) / array.length;
+  return Math.sqrt(
+    array.reduce((acc, n) => acc + Math.pow(n - mean, 2)) / array.length - 1
+  );
+};
+
+const search10Symbols = async function(date = new Date()) {
   const yesterday = new Date(date.valueOf - 24 * 60 * 60 * 1000);
   const companies = await db.Company.findAll({
     include: [db.Trend],
@@ -31,7 +38,15 @@ const search10Symbols = async function(date) {
     []
   );
 
+  let trendResults = [];
   if (symbolsToSearch[0]) {
-    await Promise.all(symbolsToSearch.map((symb) => searchTrends(symb, date)));
+    res = await Promise.all(
+      symbolsToSearch.map((symb) => searchTrends(symb, date))
+    );
+    trendResults = res.default.timelineData;
   }
+  const stdDev = standardDev(trendResults.map(obj => obj.value[0]));
+
 };
+
+module.exports = search10Symbols;
