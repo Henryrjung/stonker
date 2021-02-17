@@ -1,16 +1,15 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import Navbar from "./components/nav/Navbar";
-
+import React from 'react';
+import './App.css';
+import Navbar from "../src/components/Navbar/Navbar"
+import LoginForm from "../src/components/LoginForm/LoginForm"
 function App() {
   return (
-    <Router>
-      <div>
-        <Navbar />
-      </div>
-    </Router>
+
+    <div className='App'>
+      <Navbar/>
+  <LoginForm/>
+    </div>
+
   );
 }
 
