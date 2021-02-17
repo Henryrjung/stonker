@@ -1,0 +1,16 @@
+.MuiButton-contained {
+    background-color: #388e43;
+    font-weight: bold;
+    color: #FCFAFA;
+}
+.card {
+    padding-top: 8em;
+}
+
+.MuiCardActions-root {
+    margin-left: 4px;
+}
+
+.MuiTypography-root {
+    margin-left: 4px;
+}
