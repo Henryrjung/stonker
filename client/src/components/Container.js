@@ -1,8 +1,10 @@
 import Container from '@material-ui/core/Container';
 
 
-function Container() {
-    <Container maxWidth="sm"/>
+function Container({ children }) {
+    <Container maxWidth="sm">
+        <div>{children}</div>
+    </Container>
 
 }
 

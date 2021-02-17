@@ -5,3 +5,16 @@
     font-size: 24pt;
     font-family: Roboto;
 }
+
+a {
+    text-decoration: none;
+}
+
+button :visited {
+    color: #4B644A;
+}
+
+button :hover {
+    color: #0CCA4A;
+}
+
