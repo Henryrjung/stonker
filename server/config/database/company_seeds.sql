@@ -1,7 +1,7 @@
 
 use stonker;
 
-DROP TABLE IF EXISTS company_info;
+DROP TABLE IF EXISTS top_hits;
 
 CREATE TABLE company_info (
 symbol varchar(10)

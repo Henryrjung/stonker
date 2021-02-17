@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const CompanyInfo = sequelize.define('CompanyInfo', {
+  const CompanyInfo = sequelize.define('company_info', {
     symbol: {
       type: DataTypes.STRING,
       allowNull: false,
