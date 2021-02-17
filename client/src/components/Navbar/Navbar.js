@@ -34,7 +34,7 @@ function Navbar() {
           <Typography variant="h6" className={classes.title}>
            Stonker
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button><a href="/Login">Log In</a></Button>
         </Toolbar>
       </AppBar>
     </div>

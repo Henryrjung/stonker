@@ -4,14 +4,17 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import LoginForm from "./components/LoginForm/LoginForm";
+import Container from '@material-ui/core/Container';
 
 function App() {
   return (
     <Router>
+       <Navbar />
+      <Container>
       <div>
-        <Navbar />
         <LoginForm/>
       </div>
+      </Container>
     </Router>
 
   );
