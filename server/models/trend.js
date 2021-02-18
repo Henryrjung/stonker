@@ -54,4 +54,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  Trend.associate = function(models) {
+    Trend.belongsTo(models.Company, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+  return Trend;
 };
