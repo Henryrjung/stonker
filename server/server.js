@@ -47,7 +47,7 @@ const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
 // At 10 calls every 15 minutes, we can check 960 stock symbols a day.
 
 // commented this out as it was throwing an error - mlp
-// cron.schedule('0 0,15,30,45 * * *', scheduledTasks).start();
+cron.schedule('0,15,30,45 * * * *', scheduledTasks).start();
 
 db.sequelize
   .authenticate()

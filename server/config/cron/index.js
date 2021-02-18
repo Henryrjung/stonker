@@ -26,6 +26,7 @@ const standardDev = function(array) {
 
 const search10Symbols = async function(date = new Date()) {
   try {
+    console.log('Updating Google Trends Data for 10 Stock Symbols');
     const yesterday = new Date(date.valueOf - 24 * 60 * 60 * 1000);
     const companies = await db.Company.findAll({
       include: [db.Trend],
@@ -105,8 +106,11 @@ const search10Symbols = async function(date = new Date()) {
         dbData.standardDeviation = stdDev;
         dbData.CompanyId = companies[resIdx];
 
-         await db.Trend.create(dbData);
-        db.Company.update({checkedAt: date}, {where: {id: dbData.CompanyId}})
+        db.Trend.create(dbData);
+        db.Company.update(
+          { checkedAt: date },
+          { where: { id: dbData.CompanyId } }
+        );
       });
     }
   } catch (err) {
