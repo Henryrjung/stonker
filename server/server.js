@@ -44,10 +44,8 @@ if (process.env.NODE_ENV === 'production') {
 const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
 
 // Cron job call to check google trends.
-// At 10 calls every 15 minutes, we can check 960 stock symbols a day.
-
-// commented this out as it was throwing an error - mlp
-cron.schedule('0,15,30,45 * * * *', scheduledTasks).start();
+// At 1 call every 30 seconds, we can check 2,880 stock symbols a day.
+cron.schedule('*/30 * * * * *', scheduledTasks).start();
 
 db.sequelize
   .authenticate()
