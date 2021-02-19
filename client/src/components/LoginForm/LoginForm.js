@@ -1,7 +1,7 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
 import "./style.css";
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -15,16 +15,16 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& .MuiTextField-root': {
-      width: '50ch',
+    "& .MuiTextField-root": {
+      width: "50ch",
     },
     root: {
-    maxWidth: 345,
-    [theme.breakpoints.down("md")] : {
-    maxWidth: 200
+      maxWidth: 345,
+      [theme.breakpoints.down("md")]: {
+        maxWidth: 200,
+      },
+    },
   },
-}
-  }
 }));
 
 function LoginForm() {
@@ -35,16 +35,16 @@ function LoginForm() {
   <Grid container spacing={3}>
         <Grid item xs={12}>
     <Card>
-  
+
         <CardMedia
-            component="img"
-            alt="headimg"
-            height="300"
-            image={ headimg }
-            title=""
-       />
-       <CardContent>
-       <Typography gutterBottom variant="h5" component="h2">
+          component="img"
+          alt="headimg"
+          height="300"
+          image={headimg}
+          title=""
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
             Log In
           </Typography>
     <form className={classes.root} noValidate autoComplete="off">
