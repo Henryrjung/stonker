@@ -2,20 +2,10 @@ const googleTrends = require('google-trends-api');
 const Op = require('sequelize').Op;
 
 const db = require('../../models');
+const searchTrends = require('./searchTrends');
 
 // timezone compared to UTC
 const TIMEZONE = -18;
-
-const searchTrends = function(input, date) {
-  const weekAgo = new Date(date - 6 * 24 * 60 * 60 * 1000);
-  return googleTrends.interestOverTime({
-    keyword: [input],
-    startTime: weekAgo,
-    endTime: date,
-    timezone: TIMEZONE * 60,
-    granularTimeResolution: true
-  });
-};
 
 const standardDev = function(array) {
   const mean = array.reduce((acc, num) => acc + num) / array.length;
@@ -26,7 +16,6 @@ const standardDev = function(array) {
 
 const createTrend = async function(date = new Date()) {
   try {
-    console.log('Updating Google Trends Data for 10 Stock Symbols');
     const yesterday = new Date(date - 24 * 60 * 60 * 1000);
     const company = await db.Company.findOne({
       include: [db.Trend],
@@ -96,7 +85,6 @@ const createTrend = async function(date = new Date()) {
 
       dbData.standardDeviation = stdDev.toFixed(3);
       dbData.CompanyId = company.id;
-      console.log('dbData :>> ', dbData);
       db.Trend.create(dbData);
       db.Company.update(
         { checkedAt: date },
