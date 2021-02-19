@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 // import Container from "./Container";
 // import SearchForm from "./SearchForm/SearchForm";
-import HitCard from '../HitCard/HitCard';
-import Container from '@material-ui/core/Container';
-import Ticker from '../Ticker/Ticker';
+
+import HitCard from "../HitCard/HitCard";
+import Container from "@material-ui/core/Container";
+import Ticker from "../Ticker/Ticker";
+
 import Grid from '@material-ui/core/Grid';
 
+import API from "../../utils/API";
+
 class InfoContainer extends Component {
-  // Copied from Emp Activity for Sorting and Loading Hits
-  // state = {
-  //     employees: [],
-  //     filterRun: [],
-  //     nameSort: 0,
-  //     search: "",
+
+  //   state = {
+  //     hits: [],
+  //     // filterRun: [],
+  //     // nameSort: 0,
+  //     // search: "",
   //   };
 
   //   componentDidMount() {
-  //     this.loadEmployees();
+  //     API.getTopHits().then((res) => {
+  //       const hits = res.data.data.children.map((obj) => obj.data);
+  //       this.setState({ hits });
+  //     });
+
   //   }
 
   // handleInputChange = (event) => {
@@ -45,11 +53,14 @@ class InfoContainer extends Component {
               <h2>Trending Hits</h2>
               <HitCard />
             </div>
-          </Grid>
-        </Grid>
-      </Container>
-    );
-  }
+
+            </Grid>
+            </Grid>
+        </Container>
+    )
+}
+
+
 }
 
 export default InfoContainer;
