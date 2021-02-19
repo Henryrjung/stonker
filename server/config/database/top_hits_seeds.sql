@@ -1,18 +1,11 @@
 use stonker;
 
-DROP TABLE IF EXISTS top_hits;
-
-CREATE TABLE top_hits (
-symbol varchar(10)
-,indicator int
-);
-
-INSERT INTO top_hits (symbol,indicator)
+INSERT INTO top_hits (symbol,indicator,created_at,updated_at)
 values
- ('GME', 10)
-,('AMC', 5)
-,('GOOG', 1)
-,('ALGN', 7)
-,('MO', 2)
-,('BIIB', 6)
-,('CCL', 4)
+ ('GME', 10,now(),now())
+,('AMC', 5,now(),now())
+,('GOOG', 1,now(),now())
+,('ALGN', 7,now(),now())
+,('MO', 2,now(),now())
+,('BIIB', 6,now(),now())
+,('CCL', 4,now(),now())

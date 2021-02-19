@@ -1,7 +1,9 @@
+
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+ import { UserProvider } from './utils/UserProvider';
 
 import Wrapper from "./components/Wrapper";
 import Home from "./pages/Home";
@@ -11,6 +13,7 @@ import Signup from "./pages/Signup";
 
 function App() {
   return (
+    <UserProvider>
     <Router>
       <div>
       <Navbar />
@@ -22,6 +25,8 @@ function App() {
       </Wrapper> 
       </div>
     </Router>
+    </UserProvider>
+
 
   );
 }
