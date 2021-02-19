@@ -16,6 +16,9 @@ const useStyles = makeStyles({
     fontSize: 14,
     fontWeight: 600,
   },
+  head: {
+    fontWeight: 600,
+  },
   pos: {
     marginBottom: 12
   }
@@ -30,7 +33,7 @@ function HitCard() {
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Trending Now
         </Typography>
-        <Typography variant="h5" component="h2" className="head">
+        <Typography variant="h5" component="h2" id="head" className={classes.head}>
           Company Here
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
