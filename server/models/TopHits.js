@@ -6,9 +6,9 @@ module.exports = function(sequelize, DataTypes) {
       unique: true,
       validate: {
         notEmpty: true
-      },
-      indicator: DataTypes.INTIGER
-    }
+      }
+    },
+    indicator: DataTypes.INTEGER
   });
   return TopHits;
 };
