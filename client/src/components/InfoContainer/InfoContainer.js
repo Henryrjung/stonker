@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import HitCard from "../HitCard/HitCard";
 import Container from "@material-ui/core/Container";
 import Ticker from "../Ticker/Ticker";
+import Grid from '@material-ui/core/Grid';
 
 import API from "../../utils/API";
 
@@ -31,24 +32,29 @@ class InfoContainer extends Component {
   //       });
   //     };
 
-  render() {
-    return (
-      <Container maxWidth="sm">
-        <div>
-          <Ticker />
-          {/* <SearchForm
+render() {
+    return(
+        <Container maxWidth="sm">
+            <Grid container spacing={3}>
+        <Grid item xs={12}>
+            <div>
+                <Ticker/>
+            {/* <SearchForm
                 searchInput={this.state.search}
                 handleInputChange={this.handleInputChange}
                 filterRes={this.sorting}
             /> */}
-        </div>
-        <div>
-          <h2>Trending Hits</h2>
-          <HitCard />
-        </div>
-      </Container>
-    );
-  }
+            </div>
+            <div>
+                <h2>Trending Hits</h2>
+            <HitCard/>
+            </div>
+            </Grid>
+            </Grid>
+        </Container>
+    )
+}
+
 }
 
 export default InfoContainer;
