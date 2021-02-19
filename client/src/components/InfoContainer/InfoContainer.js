@@ -2,35 +2,35 @@ import React, { Component } from "react";
 // import Container from "./Container";
 // import SearchForm from "./SearchForm/SearchForm";
 import HitCard from "../HitCard/HitCard";
-import Container from '@material-ui/core/Container';
+import Container from "@material-ui/core/Container";
 import Ticker from "../Ticker/Ticker";
 import Grid from '@material-ui/core/Grid';
 
+import API from "../../utils/API";
+
 class InfoContainer extends Component {
-    // Copied from Emp Activity for Sorting and Loading Hits
-    // state = {
-    //     employees: [],
-    //     filterRun: [],
-    //     nameSort: 0,
-    //     search: "",
-    //   };
-    
-    //   componentDidMount() {
-    //     this.loadEmployees();
-    //   }
+  //   state = {
+  //     hits: [],
+  //     // filterRun: [],
+  //     // nameSort: 0,
+  //     // search: "",
+  //   };
 
-    // handleInputChange = (event) => {
-    //     const { value } = event.target;
-    //     const filterRun = this.state.employees.filter((emp) => 
-    //       emp.email.includes(value));
-    //       this.setState({
-    //         search: value, filterRun,
-    //       });
-    //     };
-     
-  
-    
+  //   componentDidMount() {
+  //     API.getTopHits().then((res) => {
+  //       const hits = res.data.data.children.map((obj) => obj.data);
+  //       this.setState({ hits });
+  //     });
+  //   }
 
+  // handleInputChange = (event) => {
+  //     const { value } = event.target;
+  //     const filterRun = this.state.employees.filter((emp) =>
+  //       emp.email.includes(value));
+  //       this.setState({
+  //         search: value, filterRun,
+  //       });
+  //     };
 
 render() {
     return(
@@ -54,6 +54,7 @@ render() {
         </Container>
     )
 }
+
 }
 
 export default InfoContainer;
