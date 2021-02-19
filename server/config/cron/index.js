@@ -2,6 +2,7 @@ const Op = require('sequelize').Op;
 
 const db = require('../../models');
 const searchTrends = require('./searchTrends');
+const checkHit = require('./checkHit');
 
 const standardDev = function(array) {
   const mean = array.reduce((acc, num) => acc + num) / array.length;
@@ -86,6 +87,9 @@ const createTrend = async function(date = new Date()) {
         { checkedAt: date },
         { where: { id: dbData.CompanyId } }
       );
+      if (company.Trends) {
+        checkHit(company, dbData);
+      }
     }
   } catch (err) {
     console.error(err);
