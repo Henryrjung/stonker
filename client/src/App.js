@@ -2,16 +2,25 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-// import InfoContainer from "./components/InfoContainer/InfoContainer";
-import Login from './pages/Login';
-import Home from './pages/Home';
+
+import Wrapper from "./components/Wrapper";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
 
 function App() {
   return (
     <Router>
+      <div>
       <Navbar />
-      <Route exact path='/' component={Home} />
-      <Route exact path='/login' component={Login} />
+      <Wrapper>
+      <Route exact path="/" component={Login} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+      </Wrapper> 
+      </div>
     </Router>
 
   );
