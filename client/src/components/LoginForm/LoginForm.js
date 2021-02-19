@@ -10,8 +10,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import headimg from "./headerimg.png"
 import Container from '@material-ui/core/Container';
-
-
+import { Link } from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +32,8 @@ function LoginForm() {
 
   return (
     <Container maxWidth="sm" className="card">
+  <Grid container spacing={3}>
+        <Grid item xs={12}>
     <Card>
   
         <CardMedia
@@ -72,10 +74,17 @@ function LoginForm() {
   
     <CardActions className="action">
         <Button size="small">
-            Sign Up
+        <Link to="/signup" 
+            className={
+                window.location.pathname === "/signup"}
+            >
+                Sign Up
+            </Link>
         </Button>
     </CardActions>
     </Card>
+    </Grid>
+    </Grid>
     </Container>
   );
 }

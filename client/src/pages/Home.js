@@ -1,9 +1,10 @@
 import React from "react";
+import InfoContainer from "../components/InfoContainer/InfoContainer"
 
-function Home(){
-
-   
-
-}
+function Home() {
+        return ( 
+            <InfoContainer />
+        )
+    }
 
 export default Home;
