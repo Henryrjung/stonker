@@ -1,3 +1,8 @@
+const googleTrends = require('google-trends-api');
+
+// timezone compared to UTC
+const TIMEZONE = -18;
+
 const searchTrends = function(input, date) {
   const weekAgo = new Date(date - 6 * 24 * 60 * 60 * 1000);
   return googleTrends.interestOverTime({
@@ -8,3 +13,5 @@ const searchTrends = function(input, date) {
     granularTimeResolution: true
   });
 };
+
+module.exports = searchTrends;

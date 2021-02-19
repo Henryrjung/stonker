@@ -1,11 +1,8 @@
-const googleTrends = require('google-trends-api');
 const Op = require('sequelize').Op;
 
 const db = require('../../models');
 const searchTrends = require('./searchTrends');
-
-// timezone compared to UTC
-const TIMEZONE = -18;
+const checkHit = require('./checkHit');
 
 const standardDev = function(array) {
   const mean = array.reduce((acc, num) => acc + num) / array.length;
@@ -85,11 +82,14 @@ const createTrend = async function(date = new Date()) {
 
       dbData.standardDeviation = stdDev.toFixed(3);
       dbData.CompanyId = company.id;
-      db.Trend.create(dbData);
-      db.Company.update(
+      await db.Trend.create(dbData);
+      await db.Company.update(
         { checkedAt: date },
         { where: { id: dbData.CompanyId } }
       );
+      if (company.Trends) {
+        checkHit(company, dbData);
+      }
     }
   } catch (err) {
     console.error(err);
