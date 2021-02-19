@@ -82,8 +82,8 @@ const createTrend = async function(date = new Date()) {
 
       dbData.standardDeviation = stdDev.toFixed(3);
       dbData.CompanyId = company.id;
-      db.Trend.create(dbData);
-      db.Company.update(
+      await db.Trend.create(dbData);
+      await db.Company.update(
         { checkedAt: date },
         { where: { id: dbData.CompanyId } }
       );
