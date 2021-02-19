@@ -87,7 +87,7 @@ const createTrend = async function(date = new Date()) {
         { checkedAt: date },
         { where: { id: dbData.CompanyId } }
       );
-      if (company.Trends) {
+      if (company.Trends[0]) {
         checkHit(company, dbData);
       }
     }
