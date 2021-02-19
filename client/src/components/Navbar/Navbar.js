@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,6 +10,9 @@ import 'fontsource-roboto';
 import './style.css';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useUserProvider } from '../../utils/UserProvider';
+import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,8 +22,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1
-  }
+
+    flexGrow: 1,
+    fontWeight: 600,
+    fontSize: "30pt",
+  },
+
 }));
 
 function Navbar() {
@@ -38,19 +46,33 @@ function Navbar() {
   console.log(user);
   return (
     <div className={classes.root}>
-      <AppBar position='static' className='nav'>
-        <Toolbar className='nav'>
-          <IconButton edge='start' color='inherit' aria-label='menu'>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant='h6' className={classes.title}>
-            Stonker
-          </Typography>
-          <Button>
-            <a href='/Login'>Log In</a>
-          </Button>
-        </Toolbar>
-      </AppBar>
+
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <AppBar position="static" className="nav">
+            <Toolbar className="nav">
+              {/* <IconButton edge="start" color="inherit" aria-label="menu">
+           <MenuIcon/>
+          </IconButton> */}
+              <Typography variant="h6" className={classes.title}>
+                Stonker
+              </Typography>
+              <Button>
+                <Link
+                  to="/"
+                  className={
+                    window.location.pathname === "/" ||
+                    window.location.pathname === "/login"
+                  }
+                >
+                  Log In
+                </Link>
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Grid>
+      </Grid>
+
     </div>
   );
 }

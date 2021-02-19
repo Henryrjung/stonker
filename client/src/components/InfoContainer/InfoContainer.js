@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import HitCard from "../HitCard/HitCard";
 import Container from '@material-ui/core/Container';
 import Ticker from "../Ticker/Ticker";
+import Grid from '@material-ui/core/Grid';
 
 class InfoContainer extends Component {
     // Copied from Emp Activity for Sorting and Loading Hits
@@ -34,6 +35,8 @@ class InfoContainer extends Component {
 render() {
     return(
         <Container maxWidth="sm">
+            <Grid container spacing={3}>
+        <Grid item xs={12}>
             <div>
                 <Ticker/>
             {/* <SearchForm
@@ -46,6 +49,8 @@ render() {
                 <h2>Trending Hits</h2>
             <HitCard/>
             </div>
+            </Grid>
+            </Grid>
         </Container>
     )
 }

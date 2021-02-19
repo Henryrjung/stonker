@@ -1,7 +1,7 @@
-import React from "react";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
 import "./style.css";
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,18 +13,19 @@ import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& .MuiTextField-root": {
-      width: "50ch",
+    '& .MuiTextField-root': {
+      width: '50ch',
     },
     root: {
-      maxWidth: 345,
-      [theme.breakpoints.down("md")]: {
-        maxWidth: 200,
-      },
-    },
+    maxWidth: 345,
+    [theme.breakpoints.down("md")] : {
+    maxWidth: 200
   },
+}
+  }
 }));
 
 function LoginForm() {
@@ -32,20 +33,20 @@ function LoginForm() {
 
   return (
     <Container maxWidth="sm" className="card">
-  <Grid container spacing={3}>
+<Grid container spacing={3}>
         <Grid item xs={12}>
     <Card>
-
+  
         <CardMedia
-          component="img"
-          alt="headimg"
-          height="300"
-          image={headimg}
-          title=""
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Log In
+            component="img"
+            alt="headimg"
+            height="300"
+            image={ headimg }
+            title=""
+       />
+       <CardContent>
+       <Typography gutterBottom variant="h5" component="h2">
+           Sign Up
           </Typography>
     <form className={classes.root} noValidate autoComplete="off">
    
@@ -74,11 +75,11 @@ function LoginForm() {
   
     <CardActions className="action">
         <Button size="small">
-        <Link to="/signup" 
+            <Link to="/" 
             className={
-                window.location.pathname === "/signup"}
+                window.location.pathname === "/" || window.location.pathname ==="/login" }
             >
-                Sign Up
+                Log In
             </Link>
         </Button>
     </CardActions>
