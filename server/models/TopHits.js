@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const TopHit = sequelize.define('TopHit', {
+  const TopHit = sequelize.define('top_hits', {
     symbol: {
       type: DataTypes.STRING,
       allowNull: false,
