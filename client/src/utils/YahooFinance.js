@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export default {
     getSymbol: function() {
         return axios.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers')
