@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid';
 import { getTopHits } from "../../utils/API";
 
 
-
 class InfoContainer extends Component {
 
     state = {
