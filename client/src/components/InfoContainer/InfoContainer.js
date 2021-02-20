@@ -1,40 +1,53 @@
 import React, { Component } from 'react';
 // import Container from "./Container";
 // import SearchForm from "./SearchForm/SearchForm";
-
 import HitCard from "../HitCard/HitCard";
 import Container from "@material-ui/core/Container";
 import Ticker from "../Ticker/Ticker";
-
 import Grid from '@material-ui/core/Grid';
+import { getTopHits } from "../../utils/API";
 
-import API from "../../utils/API";
+
 
 class InfoContainer extends Component {
 
-  //   state = {
-  //     hits: [],
-  //     // filterRun: [],
-  //     // nameSort: 0,
-  //     // search: "",
-  //   };
+    state = {
+      hits: [],
+    //   filterRun: [],
+    //   nameSort: 0,
+    //   search: "",
+    };
 
-  //   componentDidMount() {
-  //     API.getTopHits().then((res) => {
-  //       const hits = res.data.data.children.map((obj) => obj.data);
-  //       this.setState({ hits });
-  //     });
+   // topHits = async () => {
+    //    
+    //     getTopHit.data.forEach((hits, id) => {
+    //       hits.key=id;
+    //     });
+    //     this.setState({ hits: getTopHit.data });
+      // };
 
-  //   }
 
-  // handleInputChange = (event) => {
-  //     const { value } = event.target;
-  //     const filterRun = this.state.employees.filter((emp) =>
-  //       emp.email.includes(value));
-  //       this.setState({
-  //         search: value, filterRun,
-  //       });
-  //     };
+ 
+
+    componentDidMount() {
+      getTopHits().then(res => {
+        res.data.forEach((hits, id) => {
+          hits.key = id;
+        });
+        this.setState({ hits: res.data })
+      })
+    }
+
+ 
+
+//   handleInputChange = (event) => {
+//       const { value } = event.target;
+//       const filterRun = this.state.hits.filter((hits) =>
+//         hits.symbol.includes(value));
+//         this.setState({
+//           search: value, filterRun,
+//         });
+//       };
 
   render() {
     return (
@@ -51,7 +64,17 @@ class InfoContainer extends Component {
             </div>
             <div>
               <h2>Trending Hits</h2>
-              <HitCard />
+              {this.state.hits.map((hit)=>{
+                return(
+                        <HitCard 
+                        key={hit.id}
+                        id={hit.id}
+                        symbol={hit.symbol}
+                  />
+                      )
+                  }
+               )
+                } 
             </div>
 
             </Grid>

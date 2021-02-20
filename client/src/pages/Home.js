@@ -4,6 +4,8 @@ import TradingViewWidget, { Themes } from "react-tradingview-widget";
 import Ticker from "../components/Ticker/Ticker";
 
 function Home() {
+
+  
   return (
     <div>
       <Ticker />
