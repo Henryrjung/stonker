@@ -8,27 +8,27 @@ module.exports = function(sequelize, DataTypes) {
       // The email cannot be null, and must be a proper email before creation
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true
-        }
+        allowNull: false
+        //unique: true
+        // validate: {
+        //   isEmail: true
+        // }
       },
       // The password cannot be null
       password: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      firstname: {
-        type: DataTypes.STRING
-      },
-      lastname: {
-        type: DataTypes.STRING
       }
-    },
-    {
-      underscored: true
+      // firstname: {
+      //   type: DataTypes.STRING
+      // },
+      // lastname: {
+      //   type: DataTypes.STRING
+      // }
     }
+    // {
+    //   underscored: true
+    // }
   );
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
