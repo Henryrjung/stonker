@@ -23,7 +23,7 @@ const checkHit = (company, newTrend) => {
     const amount = diff / lastTrend.standardDeviation - 1;
     if (amount > 0) {
       const rating = Math.trunc(amount * 10 + 1);
-      db.TopHit.create({ symbol: company.symbol, indicator: rating });
+      db.top_hits.create({ symbol: company.symbol, indicator: rating });
     }
   }
 };
