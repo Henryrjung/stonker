@@ -10,5 +10,14 @@ module.exports = function(sequelize, DataTypes) {
     },
     indicator: DataTypes.INTEGER
   });
+
+  TopHit.associate = function(models) {
+    TopHit.belongsTo(models.Company, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
+  };
+
   return TopHit;
 };

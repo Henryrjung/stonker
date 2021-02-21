@@ -33,5 +33,11 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
+  Company.associate = function(models) {
+    Company.hasMany(models.top_hits, {
+      onDelete: 'set null'
+    });
+  };
+
   return Company;
 };
