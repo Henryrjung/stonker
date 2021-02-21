@@ -1,14 +1,54 @@
-import React from "react";
-import "./Footer.css";
+import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
+import './Footer.css';
+import AppBar from "@material-ui/core/AppBar";
 
-function Footer() {
+function Copyright() {
   return (
-    <>
-      <div className="footer">
-        <p>Placeholder</p>
-      </div>
-    </>
+    <Typography variant="body2" color="textSecondary">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Stonker
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
   );
 }
 
-export default Footer;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2),
+  },
+  footer: {
+    padding: theme.spacing(3, 2),
+    marginTop: 'auto',
+    
+  },
+}));
+
+export default function StickyFooter() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <footer className='footer'>
+        <Container maxWidth="sm">
+          <Typography variant="body1">You've found the bottom of the page!</Typography>
+          <Copyright />
+        </Container>
+      </footer>
+    </div>
+  );
+}
