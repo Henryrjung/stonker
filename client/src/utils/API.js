@@ -6,3 +6,6 @@ export function getTopHits() {
 export function createUser(userdata) {
   return axios.post('/api/signup', userdata);
 }
+export function loginUser(userdata) {
+  return axios.post('/api/auth/login', userdata);
+}
