@@ -4,6 +4,5 @@ export function getTopHits() {
   return axios.get('/api/tophits');
 }
 export function createUser(userdata) {
-  console.log('-------------------------axios --------');
-  return axios.post('/api/auth/signup', userdata);
+  return axios.post('/api/signup', userdata);
 }
