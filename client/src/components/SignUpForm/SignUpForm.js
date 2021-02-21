@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUpForm() {
+  let history = useHistory();
   // all hooks here forever and ever
   const [loginData, setLoginData] = useState({
     email: '',
@@ -37,17 +39,12 @@ function SignUpForm() {
   });
 
   const { user, setUser } = useUserProvider();
-  useEffect(() => {
-    setUser({
-      // api call?
-    });
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser({ ...loginData });
-    console.log('--------submit button-------');
-    console.log(loginData);
+    createUser({ ...loginData }).then(() => {
+      history.push('/home');
+    });
   };
 
   return (
