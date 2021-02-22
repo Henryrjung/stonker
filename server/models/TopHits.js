@@ -1,14 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const TopHit = sequelize.define('top_hits', {
-    symbol: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: true
-      }
-    },
-    indicator: DataTypes.INTEGER
+    indicator: DataTypes.FLOAT(5, 2)
   });
 
   TopHit.associate = function(models) {
