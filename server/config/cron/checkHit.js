@@ -2,12 +2,11 @@ const db = require('../../models');
 
 const checkHit = (company, newTrend) => {
   if (newTrend.day6max === 100) {
-    const lastTrend = Math.max.apply(
-      Math,
-      company.dataValues.Trends.map((trend) => trend.createdAt)
+    const lastTrend = company.dataValues.Trends.reduce((acc, trend) =>
+      acc.createdAt < trend.createdAt ? trend : acc
     );
     const daysDiff = Math.round(
-      ((newTrend.createdAt - lastTrend.createdAt) / 24) * 60 * 60 * 1000
+      (newTrend.createdAt - lastTrend.createdAt) / (24 * 60 * 60 * 1000)
     );
     if (daysDiff < 6) {
       // this will exclude days which lastTrend and newTrend don't have in common
@@ -32,7 +31,10 @@ const checkHit = (company, newTrend) => {
       }
       const rating = (diff / divisor).toFixed(2);
       if (rating > 1) {
-        db.top_hits.create({ symbol: company.symbol, indicator: rating });
+        db.top_hits.create({
+          CompanyId: company.dataValues.id,
+          indicator: rating
+        });
       }
     }
   }

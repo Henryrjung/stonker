@@ -82,13 +82,13 @@ const createTrend = async function(date = new Date()) {
 
       dbData.standardDeviation = stdDev.toFixed(3);
       dbData.CompanyId = company.id;
-      await db.Trend.create(dbData);
+      const newTrend = await db.Trend.create(dbData);
       await db.Company.update(
         { checkedAt: date },
         { where: { id: dbData.CompanyId } }
       );
       if (company.Trends[0]) {
-        checkHit(company, dbData);
+        checkHit(company, newTrend);
       }
     }
   } catch (err) {

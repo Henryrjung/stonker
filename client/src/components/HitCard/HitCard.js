@@ -45,7 +45,7 @@ function HitCard(props) {
           id="head"
           className={classes.head}
         >
-          {props.symbol}
+          {props.symbol + " - " + props.company}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           Stock Ticker and Price
