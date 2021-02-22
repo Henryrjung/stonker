@@ -31,6 +31,9 @@ module.exports = function(sequelize, DataTypes) {
     Company.hasMany(models.Trend, {
       onDelete: 'cascade'
     });
+    Company.hasMany(models.top_hits, {
+      onDelete: 'set null'
+    });
   };
 
   return Company;

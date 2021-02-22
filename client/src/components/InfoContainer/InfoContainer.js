@@ -1,16 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import Container from "./Container";
 // import SearchForm from "./SearchForm/SearchForm";
-import HitCard from "../HitCard/HitCard";
-import Container from "@material-ui/core/Container";
-import Ticker from "../Ticker/Ticker";
-import Grid from "@material-ui/core/Grid";
-import { getTopHits } from "../../utils/API";
-
+import HitCard from '../HitCard/HitCard';
+import Container from '@material-ui/core/Container';
+import Ticker from '../Ticker/Ticker';
+import Grid from '@material-ui/core/Grid';
+import { getTopHits } from '../../utils/API';
 
 class InfoContainer extends Component {
   state = {
-    hits: [],
+    hits: []
     //   filterRun: [],
     //   nameSort: 0,
     //   search: "",
@@ -26,9 +25,7 @@ class InfoContainer extends Component {
 
   componentDidMount() {
     getTopHits().then((res) => {
-      res.data.forEach((hits, id) => {
-        hits.key = id;
-      });
+      console.log('res.data :>> ', res.data);
       this.setState({ hits: res.data });
     });
   }
@@ -44,7 +41,7 @@ class InfoContainer extends Component {
 
   render() {
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth='sm'>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <div>
@@ -58,7 +55,14 @@ class InfoContainer extends Component {
             <div>
               <h2>Trending Hits</h2>
               {this.state.hits.map((hit) => {
-                return <HitCard key={hit.id} id={hit.id} symbol={hit.symbol} />;
+                return (
+                  <HitCard
+                    key={hit.id}
+                    id={hit.id}
+                    symbol={hit.Company.symbol}
+                    company={hit.Company.company}
+                  />
+                );
               })}
             </div>
           </Grid>

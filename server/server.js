@@ -45,7 +45,7 @@ const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
 
 // Cron job call to check google trends.
 // At 1 call every 30 seconds, we can check 2,880 stock symbols a day.
-//cron.schedule('*/30 * * * * *', scheduledTasks).start();
+cron.schedule('*/30 * * * * *', scheduledTasks).start();
 
 db.sequelize
   .authenticate()
