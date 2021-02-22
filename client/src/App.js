@@ -10,7 +10,7 @@ import Blog from "./pages/Blog";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { getTopHits } from "./utils/API";
-
+import Footer from './components/footer/Footer';
 function App() {
 
   const [hitsToRender, updateHitsToRender] = useState([]);
@@ -32,6 +32,7 @@ useEffect(() => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
       </Wrapper> 
+      <Footer />
       </div>
     </Router>
     </UserProvider>
