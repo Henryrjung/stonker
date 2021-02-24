@@ -10,27 +10,27 @@ const checkHit = (company, newTrend) => {
     );
     if (daysDiff < 6) {
       // this will exclude days which lastTrend and newTrend don't have in common
-      let lastTrendMaxes = new Map();
+      let lastTrendAvgs = new Map();
       for (let i = 6; i > daysDiff; i--) {
-        lastTrendMaxes.set(i, lastTrend[`day${i}max`]);
+        lastTrendAvgs.set(i, lastTrend[`day${i}avg`]);
       }
-      const lastMax = { max: 0, day: 0 };
-      lastTrendMaxes.forEach((max, key) => {
-        if (lastMax.max < max) {
-          lastMax.max = max;
-          lastMax.day = key;
+      const topAvg = { avg: 0, day: 0 };
+      lastTrendAvgs.forEach((avg, key) => {
+        if (topAvg.avg < avg) {
+          topAvg.avg = avg;
+          topAvg.day = key;
         }
       });
-      const diff = lastMax.max - newTrend[`day${lastMax.day - daysDiff}max`];
 
-      // a hit will only be generated if the previous high (that they have in common) changes by
-      // more than double the standard deviation or 15, whichever is greater.
-      let divisor = 15;
-      if (lastTrend.standardDeviation * 2 > divisor) {
-        divisor = lastTrend.standardDeviation * 2;
+      let percentage = 15;
+      if (lastTrend.standardDeviation * 2 > percentage) {
+        percentage = lastTrend.standardDeviation * 2;
       }
-      const rating = (diff / divisor).toFixed(2);
-      if (rating > 1) {
+
+      const minimumHitReq = topAvg.avg - percentage;
+      const compAvg = newTrend[`day${topAvg.day - daysDiff}avg`];
+      if (compAvg < minimumHitReq) {
+        const rating = minimumHitReq / (compAvg < 1 ? 1 : compAvg);
         db.top_hits.create({
           CompanyId: company.dataValues.id,
           indicator: rating
