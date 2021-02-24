@@ -7,6 +7,7 @@ import Ticker from '../Ticker/Ticker';
 import Grid from '@material-ui/core/Grid';
 import { getTopHits } from '../../utils/API';
 
+
 class InfoContainer extends Component {
   state = {
     hits: []
@@ -61,6 +62,7 @@ class InfoContainer extends Component {
                     id={hit.id}
                     symbol={hit.Company.symbol}
                     company={hit.Company.company}
+                    link={hit.id}
                   />
                 );
               })}
