@@ -9,6 +9,9 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
     });
+    TopHit.hasMany(models.Comment, {
+      onDelete: 'set null'
+    });
   };
 
   return TopHit;
