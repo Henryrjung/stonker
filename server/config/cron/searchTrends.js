@@ -4,7 +4,10 @@ const googleTrends = require('google-trends-api');
 const TIMEZONE = -18;
 
 const searchTrends = function(input, date) {
-  const weekAgo = new Date(date - 6 * 24 * 60 * 60 * 1000);
+  let today = new Date(date);
+  let weekAgo = new Date(date - 6 * 24 * 60 * 60 * 1000);
+  today.setUTCHours(0, 0, 0, 0);
+  weekAgo.setUTCHours(0, 0, 0, 0);
   return googleTrends.interestOverTime({
     keyword: [input],
     startTime: weekAgo,

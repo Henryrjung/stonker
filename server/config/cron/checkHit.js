@@ -26,7 +26,8 @@ const checkHit = (company, newTrend) => {
       if (lastTrend.standardDeviation * 2 > percentage) {
         percentage = lastTrend.standardDeviation * 2;
       }
-
+      // only generates a hit if the previous highest trend day's average goes down
+      // by 15% or 2*standard deviation, whichever is highest.
       const minimumHitReq = topAvg.avg - percentage;
       const compAvg = newTrend[`day${topAvg.day - daysDiff}avg`];
       if (compAvg < minimumHitReq) {
