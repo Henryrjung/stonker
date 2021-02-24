@@ -14,7 +14,7 @@ const standardDev = function(array) {
 const createTrend = async function(date = new Date()) {
   try {
     let midnight = new Date();
-    midnight.setDate(dayOfMonth - 1).setUTCHours(0, 0, 0, 0);
+    midnight.setUTCHours(0, 0, 0, 0);
     const company = await db.Company.findOne({
       include: [db.Trend],
       // Op.lte should be less than or equal to
