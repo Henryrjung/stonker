@@ -54,9 +54,9 @@ function HitCard(props) {
       <CardActions>
       <Button size="small">
                 <Link
-                  to="/blog"
+                  to={"/blog/" + props.id}
                   className={
-                    window.location.pathname === "/blog"
+                    window.location.pathname === '/blog/*'
                   }
                 >
                   See what others are saying...
