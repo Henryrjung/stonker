@@ -3,10 +3,10 @@ import React, { useContext, useState } from 'react';
 const useUserModel = () => {
   const [user, setUser] = useState({
     id: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-    token: ''
+    // first_name: '',
+    // last_name: '',
+    email: ''
+    // token: ''
   });
   return {
     user,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -33,6 +33,9 @@ function LoginForm() {
   const classes = useStyles();
   let history = useHistory();
   const { user, setUser } = useUserProvider();
+  useEffect(() => {
+    setUser({ id: '', email: '' });
+  }, []);
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -41,7 +44,8 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginUser({ ...loginData }).then(() => {
+    loginUser({ ...loginData }).then((response) => {
+      setUser(response.data);
       history.push('/home');
     });
   };

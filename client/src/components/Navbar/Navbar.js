@@ -30,16 +30,8 @@ function Navbar() {
   const classes = useStyles();
   const { user, setUser } = useUserProvider();
   useEffect(() => {
-    setUser({
-      id: "5",
-      first_name: "Matt",
-      last_name: "P",
-      email: "hellow@sldkfj",
-      token: "564654161",
-    });
-  }, []);
+  }, user);
 
-  console.log(user);
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -60,7 +52,7 @@ function Navbar() {
                     window.location.pathname === "/login"
                   }
                 >
-                  Log In
+                  {user.id ? "Log Out" : "Log In"}
                 </Link>
               </Button>
             </Toolbar>
