@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import MessageBoard from "../MessageBoard/MessageBoard";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import NewComment from "../NewComment/NewComment";
+import Comment from "../Comment/Comment"
 
 const BlogContainer = ({ hit }) => {
 
@@ -15,6 +17,8 @@ const BlogContainer = ({ hit }) => {
               id={hit?.id}
               company={hit?.Company?.company}
             />
+            <Comment />
+            <NewComment />
           </div>
         </Grid>
       </Grid>
