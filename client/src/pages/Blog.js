@@ -5,6 +5,7 @@ import MessageBoard from '../components/MessageBoard/MessageBoard';
 import { getOneHit } from '../utils/API';
 import { useParams } from 'react-router-dom';
 import { useUserProvider } from '../utils/UserProvider';
+import LoginForm from "../components/LoginForm/LoginForm";
 
 function Blog(props) {
   const { user, setUser } = useUserProvider();
@@ -30,7 +31,9 @@ function Blog(props) {
         <MessageBoard />
       </BlogContainer>
     );
-  }
+  } else {
+    return <LoginForm />;
+}
 }
 
 export default Blog;
