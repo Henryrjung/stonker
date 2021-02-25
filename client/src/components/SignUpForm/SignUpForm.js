@@ -42,7 +42,8 @@ function SignUpForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser({ ...loginData }).then(() => {
+    createUser({ ...loginData }).then((response) => {
+      setUser(response.data);
       history.push('/home');
     });
   };
