@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
 const cron = require('node-cron');
+require('dotenv').config();
 
 const db = require('./models');
 const routes = require('./routes');
@@ -18,7 +19,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(helmet());
-app.use(session({ secret: 'TBD', resave: true, saveUninitialized: true }));
+app.use(session({ secret: 'process.env.SESSION_SECRET', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
