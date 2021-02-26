@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 export default {
-    getSymbol: function() {
-        return axios.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers')
-    },
-    getNews: function() {
-        return axios.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/v2/get-details')
-    }
-};
+  getPreviousClose: function(symbol) {
+    return axios.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-spark?symbols=' + symbol + '&interval=1m&range=1d')
+  }
+}
