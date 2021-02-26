@@ -9,6 +9,7 @@
     }
   ],
   "start_url": ".",
+  "content_security_policy": "script-src 'self' 'sha256-7qWV/nsHiC1dgKPtwcoCvl0G0Y1bqkHx5TaCfEQqUSo='; object-src 'self'",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
