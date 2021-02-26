@@ -22,7 +22,7 @@ app.use(helmet());
 app.use(session({ secret: 'process.env.SESSION_SECRET', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
