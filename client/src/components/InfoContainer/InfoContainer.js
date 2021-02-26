@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import SearchForm from "./SearchForm/SearchForm";
 import HitCard from '../HitCard/HitCard';
 import Container from '@material-ui/core/Container';
-import Ticker from '../Ticker/Ticker';
+// import Ticker from '../Ticker/Ticker';
 import Grid from '@material-ui/core/Grid';
 import { getTopHits } from '../../utils/API';
 
@@ -46,7 +46,7 @@ class InfoContainer extends Component {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <div>
-              <Ticker />
+              {/* <Ticker /> */}
               {/* <SearchForm
                 searchInput={this.state.search}
                 handleInputChange={this.handleInputChange}
