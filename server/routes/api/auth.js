@@ -5,6 +5,6 @@ const authController = require('../../controllers/auth');
 router.use(passport.authenticate('local'));
 
 // Matches with '/api/auth/login'
-router.route('/login').post(authController.login);
+router.route('/login').post(authController);
 
 module.exports = router;

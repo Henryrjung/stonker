@@ -1,0 +1,12 @@
+#head {
+    color: #4B644A;
+}
+
+.contain {
+    align-content: center;
+}
+
+#card {
+    margin: 1em;
+    background-color: #f5f5f5;
+}
