@@ -6,7 +6,6 @@ import NewComment from '../NewComment/NewComment';
 import Comment from '../Comment/Comment';
 
 const BlogContainer = ({ hit }) => {
- console.log('hit obj for chris',hit)
   return (
     <Container maxWidth='sm'>
       <Grid container spacing={3}>
@@ -18,11 +17,10 @@ const BlogContainer = ({ hit }) => {
               company={hit?.Company?.company}
             />
             {hit?.Comments.map((comment) => {
-             return  <Comment text={comment?.comments} key={comment?.id} />;
+              return <Comment text={comment?.comments} key={comment?.id} />;
             })}
-            
 
-            <NewComment />
+            <NewComment hitId={hit?.id} />
           </div>
         </Grid>
       </Grid>
