@@ -8,7 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: true
       }
-    });
+    }),
+      Comment.belongsTo(models.user, {
+        foreignKey: {
+          allowNull: true
+        }
+      });
   };
 
   return Comment;

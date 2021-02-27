@@ -1,7 +1,7 @@
 -- start application first for Sequelize to create tables
 -- paste the code below into Mysql after you have started the application
 
-use stonker 
+use stonker ;
 
 insert into companies (symbol,company,sector,checked_at,created_at,updated_at)
 values
