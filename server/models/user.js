@@ -8,23 +8,21 @@ module.exports = function(sequelize, DataTypes) {
       // The email cannot be null, and must be a proper email before creation
       email: {
         type: DataTypes.STRING,
-        allowNull: false
-        //unique: true
-        // validate: {
-        //   isEmail: true
-        // }
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
       },
       // The password cannot be null
       password: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      userName :{
+        type: DataTypes.STRING
       }
-      // firstname: {
-      //   type: DataTypes.STRING
-      // },
-      // lastname: {
-      //   type: DataTypes.STRING
-      // }
+    
     }
     // {
     //   underscored: true
@@ -43,5 +41,11 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+  User.associate = function(models) {    
+    User.hasMany(models.Comment, {
+      onDelete: 'set null'
+    });
+  };
+
   return User;
 };
