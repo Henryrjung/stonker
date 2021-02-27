@@ -13,15 +13,15 @@ function Home() {
   if (user.id) {
     return (
       <div>
-        <TradingChart />
-        {/* <Marquee />
+        {/* <TradingChart /> */}
+        <Marquee />
         <TradingViewWidget
           symbol="NASDAQ:AAPL"
           theme={Themes.LIGHT}
           locale="us"
           width="600"
           height="300"
-        /> */}
+        />
         <InfoContainer />
       </div>
     );

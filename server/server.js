@@ -22,7 +22,9 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      connectSrc: ["'self'", "https://stonkerapp.herokuapp.com/"],
+      frameSrc: ["'self'"],
+      childSrc: ["'self'"],
+      connectSrc: ["'self'"],
       scriptSrc: [
         "'self'",
         "https://s3.tradingview.com/",
@@ -34,6 +36,7 @@ app.use(
         "https://fonts.googleapis.com",
       ],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'"],
       baseUri: ["'self'"],
     },
   })
