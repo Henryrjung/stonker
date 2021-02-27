@@ -5,18 +5,27 @@ import MessageBoard from '../components/MessageBoard/MessageBoard';
 import { getOneHit } from '../utils/API';
 import { useParams } from 'react-router-dom';
 import { useUserProvider } from '../utils/UserProvider';
-import LoginForm from "../components/LoginForm/LoginForm";
+import LoginForm from '../components/LoginForm/LoginForm';
 
 function Blog(props) {
   const { user, setUser } = useUserProvider();
-  const [hit, setHit] = useState({});
+  const [hit, setHit] = useState({
+    Comments: []
+  });
+
   console.log(hit);
 
   const { id } = useParams();
   useEffect(() => {
     getOneHit(id)
       .then((res) => {
+        // see more
         const data = res?.data?.[0];
+        
+        //
+        const commentData = res?.data[0].Comments;
+        console.log(commentData);
+        //
         if (data) {
           setHit(data);
         }
@@ -28,12 +37,12 @@ function Blog(props) {
     return (
       <BlogContainer hit={hit}>
         {/* <Marquee /> */}
-        <MessageBoard />
+        {/* <MessageBoard /> */}
       </BlogContainer>
     );
   } else {
     return <LoginForm />;
-}
+  }
 }
 
 export default Blog;

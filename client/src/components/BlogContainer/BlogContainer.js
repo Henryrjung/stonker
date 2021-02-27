@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import MessageBoard from "../MessageBoard/MessageBoard";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import NewComment from "../NewComment/NewComment";
-import Comment from "../Comment/Comment"
+import React, { Component } from 'react';
+import MessageBoard from '../MessageBoard/MessageBoard';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import NewComment from '../NewComment/NewComment';
+import Comment from '../Comment/Comment';
 
 const BlogContainer = ({ hit }) => {
-
+ console.log('hit obj for chris',hit)
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth='sm'>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <div>
@@ -17,7 +17,11 @@ const BlogContainer = ({ hit }) => {
               id={hit?.id}
               company={hit?.Company?.company}
             />
-            <Comment />
+            {hit?.Comments.map((comment) => {
+             return  <Comment text={comment?.comments} key={comment?.id} />;
+            })}
+            
+
             <NewComment />
           </div>
         </Grid>
