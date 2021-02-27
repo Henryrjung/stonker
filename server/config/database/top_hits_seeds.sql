@@ -9,3 +9,14 @@ values
 ,('MO', 2,now(),now())
 ,('BIIB', 6,now(),now())
 ,('CCL', 4,now(),now())
+
+
+
+
+use stonker;
+
+INSERT INTO top_hits (indicator,created_at,updated_at,company_id)
+values
+ (10,now(),now(),'ABT')
+,(5,now(),now(),'MMM')
+,(,1,now(),now(),'GOOG')
