@@ -28,11 +28,10 @@ app.use(
       scriptSrc: [
         "'self'",
         "https://s3.tradingview.com/",
-        "https://material-ui.com/",
+        "https://s.tradingview.com/"
       ],
       styleSrc: [
         "'self'",
-        "https://material-ui.com/",
         "https://fonts.googleapis.com",
       ],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
