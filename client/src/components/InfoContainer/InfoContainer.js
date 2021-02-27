@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import Container from "./Container";
 // import SearchForm from "./SearchForm/SearchForm";
-import HitCard from '../HitCard/HitCard';
-import Container from '@material-ui/core/Container';
-// import Ticker from '../Ticker/Ticker';
-import Grid from '@material-ui/core/Grid';
-import { getTopHits } from '../../utils/API';
-
+import HitCard from "../HitCard/HitCard";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import { getTopHits } from "../../utils/API";
 
 class InfoContainer extends Component {
   state = {
-    hits: []
+    hits: [],
     //   filterRun: [],
     //   nameSort: 0,
     //   search: "",
@@ -26,7 +24,7 @@ class InfoContainer extends Component {
 
   componentDidMount() {
     getTopHits().then((res) => {
-      console.log('res.data :>> ', res.data);
+      console.log("res.data :>> ", res.data);
       this.setState({ hits: res.data });
     });
   }
@@ -42,11 +40,10 @@ class InfoContainer extends Component {
 
   render() {
     return (
-      <Container maxWidth='sm'>
+      <Container maxWidth="sm">
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <div>
-              {/* <Ticker /> */}
               {/* <SearchForm
                 searchInput={this.state.search}
                 handleInputChange={this.handleInputChange}
