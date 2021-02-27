@@ -19,10 +19,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      userName :{
+      username: {
         type: DataTypes.STRING
       }
-    
     }
     // {
     //   underscored: true
@@ -41,7 +40,7 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
-  User.associate = function(models) {    
+  User.associate = function(models) {
     User.hasMany(models.Comment, {
       onDelete: 'set null'
     });
