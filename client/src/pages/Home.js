@@ -5,6 +5,7 @@ import Marquee from "../components/Marquee/Marquee";
 import { useUserProvider } from "../utils/UserProvider";
 import LoginForm from "../components/LoginForm/LoginForm";
 // import Ticker from '../components/Ticker/Ticker';
+import { TradingChart } from '../components/tradingChart/TradingChart';
 
 function Home() {
   const { user, setUser } = useUserProvider();
@@ -12,14 +13,15 @@ function Home() {
   if (user.id) {
     return (
       <div>
-        <Marquee />
+        <TradingChart />
+        {/* <Marquee />
         <TradingViewWidget
           symbol="NASDAQ:AAPL"
           theme={Themes.LIGHT}
           locale="us"
           width="600"
           height="300"
-        />
+        /> */}
         <InfoContainer />
       </div>
     );
@@ -29,3 +31,4 @@ function Home() {
 }
 
 export default Home;
+

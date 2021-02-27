@@ -13,3 +13,7 @@ export function createUser(userdata) {
 export function loginUser(userdata) {
   return axios.post('/api/auth/login', userdata);
 }
+
+export function newComment(commentData) {
+  return axios.post('/api/comments', commentData);
+}

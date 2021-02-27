@@ -13,18 +13,16 @@ function Blog(props) {
     Comments: []
   });
 
-  console.log(hit);
-
   const { id } = useParams();
   useEffect(() => {
     getOneHit(id)
       .then((res) => {
         // see more
         const data = res?.data?.[0];
-        
+
         //
         const commentData = res?.data[0].Comments;
-        console.log(commentData);
+
         //
         if (data) {
           setHit(data);
