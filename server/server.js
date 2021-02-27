@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
+// const helmet = require("helmet");
+// const cors = require("cors");
 const session = require("express-session");
 const cron = require("node-cron");
 require("dotenv").config();
@@ -18,28 +18,28 @@ const app = express();
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      frameSrc: ["'self'"],
-      childSrc: ["'self'"],
-      connectSrc: ["'self'"],
-      scriptSrc: [
-        "'self'",
-        "https://s3.tradingview.com/",
-        "https://s.tradingview.com/"
-      ],
-      styleSrc: [
-        "'self'",
-        "https://fonts.googleapis.com",
-      ],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'"],
-      baseUri: ["'self'"],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'"],
+//       frameSrc: ["'self'"],
+//       childSrc: ["'self'"],
+//       connectSrc: ["'self'"],
+//       scriptSrc: [
+//         "'self'",
+//         "https://s3.tradingview.com/",
+//         "https://s.tradingview.com/"
+//       ],
+//       styleSrc: [
+//         "'self'",
+//         "https://fonts.googleapis.com",
+//       ],
+//       fontSrc: ["'self'", "https://fonts.gstatic.com"],
+//       imgSrc: ["'self'"],
+//       baseUri: ["'self'"],
+//     },
+//   })
+// );
 app.use(
   session({
     secret: "process.env.SESSION_SECRET",

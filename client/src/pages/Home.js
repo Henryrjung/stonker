@@ -1,7 +1,7 @@
 import React from "react";
 import InfoContainer from "../components/InfoContainer/InfoContainer";
-import TradingViewWidget, { Themes } from "react-tradingview-widget";
-import Marquee from "../components/Marquee/Marquee";
+// import TradingViewWidget, { Themes } from "react-tradingview-widget";
+// import Marquee from "../components/Marquee/Marquee";
 import { useUserProvider } from "../utils/UserProvider";
 import LoginForm from "../components/LoginForm/LoginForm";
 // import Ticker from '../components/Ticker/Ticker';
@@ -14,14 +14,14 @@ function Home() {
     return (
       <div>
         {/* <TradingChart /> */}
-        <Marquee />
-        <TradingViewWidget
+        {/* <Marquee /> */}
+        {/* <TradingViewWidget
           symbol="NASDAQ:AAPL"
           theme={Themes.LIGHT}
           locale="us"
           width="600"
           height="300"
-        />
+        /> */}
         <InfoContainer />
       </div>
     );
