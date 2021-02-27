@@ -35,6 +35,7 @@ function SignUpForm() {
   // all hooks here forever and ever
   const [loginData, setLoginData] = useState({
     email: '',
+    username: '',
     password: ''
   });
 
@@ -79,6 +80,18 @@ function SignUpForm() {
                     }
                     id='outlined-required'
                     label='Email'
+                    variant='outlined'
+                  />
+                  <br />
+                  <br />
+                  <TextField
+                    required
+                    value={loginData.username}
+                    onChange={(e) =>
+                      setLoginData({ ...loginData, username: e.target.value })
+                    }
+                    id='outlined-required'
+                    label='Username'
                     variant='outlined'
                   />
                   <br />
