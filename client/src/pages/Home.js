@@ -1,10 +1,10 @@
 import React from "react";
 import InfoContainer from "../components/InfoContainer/InfoContainer";
-// import TradingViewWidget, { Themes } from "react-tradingview-widget";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 // import Marquee from "../components/Marquee/Marquee";
 import { useUserProvider } from "../utils/UserProvider";
 import LoginForm from "../components/LoginForm/LoginForm";
-// import Ticker from '../components/Ticker/Ticker';
+import Ticker from '../components/Ticker/Ticker';
 import { TradingChart } from '../components/tradingChart/TradingChart';
 
 function Home() {
@@ -15,13 +15,13 @@ function Home() {
       <div>
         {/* <TradingChart /> */}
         {/* <Marquee /> */}
-        {/* <TradingViewWidget
+        <TradingViewWidget
           symbol="NASDAQ:AAPL"
           theme={Themes.LIGHT}
           locale="us"
           width="600"
           height="300"
-        /> */}
+        />
         <InfoContainer />
       </div>
     );
