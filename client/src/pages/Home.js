@@ -1,11 +1,9 @@
 import React from "react";
 import InfoContainer from "../components/InfoContainer/InfoContainer";
 import TradingViewWidget, { Themes } from "react-tradingview-widget";
-// import Marquee from "../components/Marquee/Marquee";
+import Marquee from "../components/Marquee/Marquee";
 import { useUserProvider } from "../utils/UserProvider";
 import LoginForm from "../components/LoginForm/LoginForm";
-import Ticker from '../components/Ticker/Ticker';
-import { TradingChart } from '../components/tradingChart/TradingChart';
 
 function Home() {
   const { user, setUser } = useUserProvider();
@@ -13,8 +11,7 @@ function Home() {
   if (user.id) {
     return (
       <div>
-        {/* <TradingChart /> */}
-        {/* <Marquee /> */}
+        <Marquee />
         <TradingViewWidget
           symbol="NASDAQ:AAPL"
           theme={Themes.LIGHT}
@@ -31,4 +28,3 @@ function Home() {
 }
 
 export default Home;
-
