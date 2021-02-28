@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BlogContainer from '../components/BlogContainer/BlogContainer';
-// import Marquee from '../components/Marquee/Marquee';
+import Marquee from '../components/Marquee/Marquee';
 import MessageBoard from '../components/MessageBoard/MessageBoard';
 import { getOneHit } from '../utils/API';
 import { useParams } from 'react-router-dom';
@@ -34,7 +34,7 @@ function Blog(props) {
   if (user.id) {
     return (
       <BlogContainer hit={hit}>
-        {/* <Marquee /> */}
+        <Marquee />
         {/* <MessageBoard /> */}
       </BlogContainer>
     );

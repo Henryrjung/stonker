@@ -13,22 +13,22 @@ const standardDev = function(array) {
 
 const createTrend = async function(date = new Date()) {
   try {
-    let midnight = new Date();
+    let midnight = new Date(date);
     midnight.setUTCHours(0, 0, 0, 0);
     const company = await db.Company.findOne({
       include: [db.Trend],
       // Op.lte should be less than or equal to
-      where: { checkedAt: { [Op.lte]: midnight } }
+      where: { checkedAt: { [Op.lt]: midnight } }
     });
 
     if (company) {
-      res = await searchTrends(company.symbol, date);
+      res = await searchTrends(company.symbol, midnight);
 
       const trendResults = JSON.parse(res).default.timelineData;
       const stdDev = standardDev(trendResults.map((obj) => obj.value[0]));
 
       const dayifier = 24 * 60 * 60;
-      const day6 = date / (dayifier * 1000);
+      const day6 = midnight / (dayifier * 1000);
       const dateMap = trendResults.reduce(
         (map, trend) => {
           const day = Math.trunc(day6 - parseInt(trend.time) / dayifier);
@@ -85,7 +85,7 @@ const createTrend = async function(date = new Date()) {
       dbData.CompanyId = company.id;
       const newTrend = await db.Trend.create(dbData);
       await db.Company.update(
-        { checkedAt: date },
+        { checkedAt: midnight },
         { where: { id: dbData.CompanyId } }
       );
       if (company.Trends[0]) {

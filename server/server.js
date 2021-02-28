@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-// const helmet = require("helmet");
+const helmet = require("helmet");
 // const cors = require("cors");
 const session = require("express-session");
 const cron = require("node-cron");
@@ -18,6 +18,11 @@ const app = express();
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(
+  helmet({
+    contentSecurityPolicy: false
+  })
+);
 // app.use(
 //   helmet.contentSecurityPolicy({
 //     directives: {
