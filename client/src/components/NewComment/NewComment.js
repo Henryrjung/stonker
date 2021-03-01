@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import './style.css';
-import { newComment } from '../../utils/API';
+import { newComment, getOneHit } from '../../utils/API';
 import { useUserProvider } from '../../utils/UserProvider';
 
 const useStyles = makeStyles({
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   }
 });
 
-const NewComment = (props) => {
+const NewComment = ({ hit, setHit }) => {
   const classes = useStyles();
 
   const [comment, setComment] = useState({
@@ -37,11 +37,21 @@ const NewComment = (props) => {
     const commentData = {
       comments: comment.comment,
       userId: user.id,
-      topHitId: props.hitId
+      topHitId: hit.id
     };
 
     console.log('commentdata:>>>', commentData);
-    newComment(commentData);
+    newComment(commentData).then(() => {
+      getOneHit(hit.id)
+        .then((res) => {
+          const data = res?.data?.[0];
+          if (data) {
+            setHit(data);
+            setComment({ comment: '' });
+          }
+        })
+        .catch((err) => console.log(err));
+    });
   };
   // console.log(props)
   return (
@@ -55,6 +65,7 @@ const NewComment = (props) => {
             className='textfield'
             rows={8}
             variant='outlined'
+            value={comment.comment}
             onChange={(e) => setComment({ comment: e.target.value })}
           />
         </CardContent>

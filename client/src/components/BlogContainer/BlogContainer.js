@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import NewComment from '../NewComment/NewComment';
 import Comment from '../Comment/Comment';
 
-const BlogContainer = ({ hit }) => {
+const BlogContainer = ({ hit, setHit }) => {
   return (
     <Container maxWidth='sm'>
       <Grid container spacing={3}>
@@ -20,7 +20,7 @@ const BlogContainer = ({ hit }) => {
               return <Comment text={comment?.comments} key={comment?.id} />;
             })}
 
-            <NewComment hitId={hit?.id} />
+            <NewComment hit={hit} setHit={setHit} />
           </div>
         </Grid>
       </Grid>

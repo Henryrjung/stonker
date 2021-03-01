@@ -17,13 +17,7 @@ function Blog(props) {
   useEffect(() => {
     getOneHit(id)
       .then((res) => {
-        // see more
         const data = res?.data?.[0];
-
-        //
-        const commentData = res?.data[0].Comments;
-
-        //
         if (data) {
           setHit(data);
         }
@@ -33,7 +27,7 @@ function Blog(props) {
 
   if (user.id) {
     return (
-      <BlogContainer hit={hit}>
+      <BlogContainer hit={hit} setHit={setHit}>
         <Marquee />
         {/* <MessageBoard /> */}
       </BlogContainer>
