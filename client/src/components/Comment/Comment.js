@@ -25,12 +25,18 @@ const Comment = (props) => {
       <Card className={classes.root} id='card'>
         <CardContent>
           <Typography
+            className={classes.title}
+            color='textSecondary'
+            gutterBottom
+          >
+            {props.user}
+          </Typography>
+          <Typography
             className={classes.pos}
             color='textSecondary'
             id='comment'
           >
             {props.text}
-         
           </Typography>
         </CardContent>
       </Card>

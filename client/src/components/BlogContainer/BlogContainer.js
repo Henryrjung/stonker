@@ -17,7 +17,13 @@ const BlogContainer = ({ hit, setHit }) => {
               company={hit?.Company?.company}
             />
             {hit?.Comments.map((comment) => {
-              return <Comment text={comment?.comments} key={comment?.id} />;
+              return (
+                <Comment
+                  text={comment?.comments}
+                  key={comment?.id}
+                  user={comment?.User?.username}
+                />
+              );
             })}
 
             <NewComment hit={hit} setHit={setHit} />

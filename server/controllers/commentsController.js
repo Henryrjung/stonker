@@ -7,9 +7,16 @@ module.exports = {
       .then((comment) => res.json(comment))
       .catch((err) => res.status(401).json(err));
   },
-  findCommentsByHits: function({ id }, res) {
-    db.Comment.findAll({ where: { topHitsId: id }, include: [db.User] })
-      .then((comments) => res.json(comments))
+  findCommentsByHits: function({ params }, res) {
+    console.log('findCommentByHits');
+    db.Comment.findAll({
+      include: [db.user],
+      where: { TopHitsId: params.id }
+    })
+      .then((comments) => {
+        console.log('comments :>> ', comments);
+        res.json(comments);
+      })
       .catch((err) => res.status(400).json(err));
   }
 };
