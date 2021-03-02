@@ -13,7 +13,7 @@ module.exports = {
     if (req.params.id) {
       db.top_hits
         .findAll({
-          include: [db.Company, db.Comment],
+          include: [db.Company],
           where: { id: req.params.id }
         })
         .then((dbModel) => res.json(dbModel))
