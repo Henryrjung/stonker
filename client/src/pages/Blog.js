@@ -18,12 +18,11 @@ function Blog(props) {
   useEffect(async () => {
     try {
       const res = await getOneHit(id);
-      const data = res?.data?.[0];
+      const hitData = res?.data?.[0];
       const comments = await getCommentsByHit(id);
-      if (data && comments) {
-        data.Comments = comments;
-        console.log('data2 :>> ', data);
-        setHit(data);
+      if (hitData && comments) {
+        hitData.Comments = comments.data;
+        setHit(hitData);
       }
     } catch (err) {
       console.error(err);

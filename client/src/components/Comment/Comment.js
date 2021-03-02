@@ -18,8 +18,6 @@ const useStyles = makeStyles({
 
 const Comment = (props) => {
   const classes = useStyles();
-
-  console.log(props);
   return (
     <Container className='contain'>
       <Card className={classes.root} id='card'>
