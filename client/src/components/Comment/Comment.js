@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 const Comment = (props) => {
   const classes = useStyles();
   let time = new Date(props.created);
-  console.log('time :>> ', time);
   const yesterday = new Date(new Date() - 24 * 60 * 60 * 1000).setHours(
     0,
     0,
