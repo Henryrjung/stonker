@@ -18,6 +18,23 @@ const useStyles = makeStyles({
 
 const Comment = (props) => {
   const classes = useStyles();
+  let time = new Date(props.created);
+  console.log('time :>> ', time);
+  const yesterday = new Date(new Date() - 24 * 60 * 60 * 1000).setHours(
+    0,
+    0,
+    0,
+    0
+  );
+  const midnight = new Date().setHours(0, 0, 0, 0);
+  if (time > midnight) {
+    time = time.getUTCHours() - new Date().getUTCHours();
+    time = time + ' hours ago';
+  } else if (time > yesterday) {
+    time = ' said yesterday';
+  } else {
+    time = 'on ' + time.toLocaleDateString();
+  }
   return (
     <Container className='contain'>
       <Card className={classes.root} id='card'>
@@ -27,7 +44,7 @@ const Comment = (props) => {
             color='textSecondary'
             gutterBottom
           >
-            {props.user}
+            {`${props.user} ${time}`}
           </Typography>
           <Typography
             className={classes.pos}
