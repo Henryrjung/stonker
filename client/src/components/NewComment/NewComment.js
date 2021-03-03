@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import './style.css';
-import { newComment } from '../../utils/API';
+import { newComment, getOneHit, getCommentsByHit } from '../../utils/API';
 import { useUserProvider } from '../../utils/UserProvider';
 
 const useStyles = makeStyles({
@@ -26,24 +26,35 @@ const useStyles = makeStyles({
   }
 });
 
-const NewComment = (props) => {
+const NewComment = ({ hit, setHit }) => {
   const classes = useStyles();
 
   const [comment, setComment] = useState({
     comment: ''
   });
   const { user, setUser } = useUserProvider();
-  const handleNewComment = () => {
+
+  const handleNewComment = async () => {
     const commentData = {
       comments: comment.comment,
       userId: user.id,
-      topHitId: props.hitId
+      topHitId: hit.id
     };
-
-    console.log('commentdata:>>>', commentData);
-    newComment(commentData);
+    try {
+      await newComment(commentData);
+      const res = await getOneHit(hit.id);
+      const hitData = res?.data?.[0];
+      const allComments = await getCommentsByHit(hit.id);
+      if (hitData && allComments) {
+        hitData.Comments = allComments.data;
+        setHit(hitData);
+        setComment({ comment: '' });
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
-  // console.log(props)
+
   return (
     <Container className='contain'>
       <Card className={classes.root} id='card'>
@@ -55,6 +66,7 @@ const NewComment = (props) => {
             className='textfield'
             rows={8}
             variant='outlined'
+            value={comment.comment}
             onChange={(e) => setComment({ comment: e.target.value })}
           />
         </CardContent>

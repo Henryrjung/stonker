@@ -49,9 +49,6 @@ const MessageBoard = (props) => {
           >
             {company}
           </Typography>
-          <Typography className={classes.pos} color='textSecondary'>
-            Overview or some other Info??
-          </Typography>
         </CardContent>
         <CardActions>
           <Button size='small'>

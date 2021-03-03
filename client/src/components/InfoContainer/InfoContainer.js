@@ -59,6 +59,7 @@ class InfoContainer extends Component {
                     symbol={hit.Company.symbol}
                     company={hit.Company.company}
                     link={hit.id}
+                    date={hit.Company.createdAt}
                   />
                 );
               })}

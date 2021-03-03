@@ -5,7 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import NewComment from '../NewComment/NewComment';
 import Comment from '../Comment/Comment';
 
-const BlogContainer = ({ hit }) => {
+const BlogContainer = ({ hit, setHit }) => {
+  console.log('hit?.Comments :>> ', hit?.Comments);
   return (
     <Container maxWidth='sm'>
       <Grid container spacing={3}>
@@ -16,11 +17,20 @@ const BlogContainer = ({ hit }) => {
               id={hit?.id}
               company={hit?.Company?.company}
             />
-            {hit?.Comments.map((comment) => {
-              return <Comment text={comment?.comments} key={comment?.id} />;
+            {hit?.Comments.sort(
+              (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+            ).map((comment) => {
+              return (
+                <Comment
+                  text={comment?.comments}
+                  key={comment?.id}
+                  user={comment?.user?.username}
+                  created={new Date(comment?.createdAt)}
+                />
+              );
             })}
 
-            <NewComment hitId={hit?.id} />
+            <NewComment hit={hit} setHit={setHit} />
           </div>
         </Grid>
       </Grid>
