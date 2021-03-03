@@ -4,6 +4,7 @@ import TradingViewWidget, { Themes } from "react-tradingview-widget";
 import Marquee from "../components/Marquee/Marquee";
 import { useUserProvider } from "../utils/UserProvider";
 import LoginForm from "../components/LoginForm/LoginForm";
+import Hero from "../components/Hero/Hero";
 
 function Home() {
   const { user, setUser } = useUserProvider();
@@ -11,6 +12,7 @@ function Home() {
   if (user.id) {
     return (
       <div>
+        <Hero />
         <Marquee />
         <TradingViewWidget
           symbol="NASDAQ:AAPL"
