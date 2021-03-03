@@ -4,13 +4,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
 import "fontsource-roboto";
 import "./style.css";
-import MenuIcon from "@material-ui/icons/Menu";
 import { useUserProvider } from "../../utils/UserProvider";
 import { Link } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,8 +32,7 @@ function Navbar() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
+  
           <AppBar position="static" className="nav">
             <Toolbar className="nav">
               {/* <IconButton edge="start" color="inherit" aria-label="menu">
@@ -57,8 +54,7 @@ function Navbar() {
               </Button>
             </Toolbar>
           </AppBar>
-        </Grid>
-      </Grid>
+
     </div>
   );
 }
