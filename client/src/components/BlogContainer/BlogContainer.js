@@ -25,6 +25,7 @@ const BlogContainer = ({ hit, setHit }) => {
                   text={comment?.comments}
                   key={comment?.id}
                   user={comment?.user?.username}
+                  created={new Date(comment?.createdAt)}
                 />
               );
             })}
