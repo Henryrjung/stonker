@@ -27,7 +27,7 @@ const Comment = (props) => {
   );
   const midnight = new Date().setHours(0, 0, 0, 0);
   if (time > midnight) {
-    time = new Date().getUTCHours() - time.getUTCHours();
+    time = new Date().getHours() - time.getHours();
     time = time + ' hours ago';
   } else if (time > yesterday) {
     time = ' said yesterday';
