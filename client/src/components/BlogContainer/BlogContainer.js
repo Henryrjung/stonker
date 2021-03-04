@@ -6,7 +6,6 @@ import NewComment from '../NewComment/NewComment';
 import Comment from '../Comment/Comment';
 
 const BlogContainer = ({ hit, setHit }) => {
-  console.log('hit?.Comments :>> ', hit?.Comments);
   return (
     <Container maxWidth='sm'>
       <Grid container spacing={3}>

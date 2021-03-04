@@ -38,7 +38,6 @@ function HitCard(props) {
   } else {
     time = 'Trending on ' + time.toLocaleDateString();
   }
-  console.log('time :>> ', time);
   return (
     <Card className={classes.root} id='card'>
       <CardContent>
